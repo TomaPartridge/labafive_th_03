@@ -186,24 +186,17 @@ namespace labafive_th_03
         {
             if(e.KeyCode==Keys.Enter)
             {
-                StreamReader r = new StreamReader("pas.txt");//grehrius?dlk
-                string pass = r.ReadLine();
-                int g = pass.Length / 5;
-                string psw="";
-                for(int i=0; i<pass.Length; i+=g)
-                {
-                    psw+=pass[i] >> pass.Length;
-                    for (int k = i + 1; k < i + g; k++)
-                        psw += ~pass[i];
-                }
-  
+                AuthorisPanel ap = new AuthorisPanel();
+
+                string psw=ap.ReadFirstPas();
+                
+
                 if ( psw== textBox8.Text)
                 {
                     panel1.Visible = false;
                 }
                 else
-                {
-                    r.BaseStream.Position = 0;
+                {                    
                     label12.Text = "Неверный пароль";
                     label12.Refresh();
                     Thread.Sleep(4000);
